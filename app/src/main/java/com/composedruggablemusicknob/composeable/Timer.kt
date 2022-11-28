@@ -1,7 +1,6 @@
 package com.composedruggablemusicknob.composeable
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults

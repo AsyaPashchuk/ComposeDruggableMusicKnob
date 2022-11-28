@@ -5,8 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -15,19 +19,45 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.composedruggablemusicknob.composeable.DropDown3D
 import com.composedruggablemusicknob.composeable.MusicKnob
 import com.composedruggablemusicknob.composeable.Timer
 import com.composedruggablemusicknob.composeable.VolumeBar
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val scrollState = rememberScrollState()
+
             Column(modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFF101010))
+                .verticalScroll(scrollState)
             ) {
+
+                Spacer(modifier = Modifier.height(30.dp))
+
+                //3D animation dropdown
+                DropDown3D(
+                    text = "Hello 3d Animation!",
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = "This is now revealed!",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(100.dp)
+//                            .background(Color.Green)
+                            .background(Color(
+                                Random.nextFloat(),
+                                Random.nextFloat(),
+                                Random.nextFloat(),
+                            1f))
+                    )
+                }
 
                 //Timer
                 Box(
